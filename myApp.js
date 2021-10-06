@@ -33,13 +33,16 @@ app.get("/json",function(req,res){
     message=message.toUpperCase();
   return res.json({"message": message});
 });*/
-app.get("/json", function(req, res) {
-  let message = 'Hello json';
-  if (process.env.MESSAGE_STYLE === 'uppercase') {
-    return res.json({'message': message.toUpperCase()});
-  }
-  return res.json({'message': message});
-});
+let message = "Hello json" ;
+if(process.env.MESSAGE_STYLE == "uppercase"){
+  app.get("/json", (req,res)=>{
+    return res.json({"message" : message.toUpperCase()});
+  });}
+  else{
+    app.get("/json", (req,res) =>{
+      return res.json({"message":message});
+    });
+}
 //alert(process.env.MESSAGE_STYLE);
 /** 7) Root-level Middleware - A logger */
 //  place it before all the routes !
