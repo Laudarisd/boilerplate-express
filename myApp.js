@@ -4,6 +4,13 @@ require('dotenv').config()
 
 // --> 7)  Mount the Logger middleware here
 
+app.use(function middleware(req, res, next){
+    console.log(req.method + " " + req.path + " " + req.ip)
+    next();
+});
+
+
+
 
 // --> 11)  Mount the body-parser middleware  here
 
@@ -49,6 +56,8 @@ app.get("/json", function(req, res){
 //alert(process.env.MESSAGE_STYLE);
 /** 7) Root-level Middleware - A logger */
 //  place it before all the routes !
+
+
 
 
 /** 8) Chaining middleware. A Time server */
