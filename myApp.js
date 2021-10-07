@@ -13,11 +13,13 @@ app.use(function(req, res, next){
 
 
 // --> 11)  Mount the body-parser middleware  here
-app.use(function(req, res, next){
-    console.log(bodyParser);
-    bodyParser.urlencoded({extended:false})
-    next();
-});
+app.use(bodyParser.urlencoded({extended: false}))
+// app.use(bodyParser.urlencoded((extended: false)))
+
+// app.use(bodyParser.json())
+//     app.get("/body-parsed-info", function(req, res){
+//         res.json( parsed: bodyParser });
+//     });    
 
 /** 1) Meet the node console. */
 console.log("Hello World");
